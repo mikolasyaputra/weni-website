@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Weni Oktavia Agus • Luxury Portfolio</title>
+  <title>Weni Oktavia Agus</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
@@ -17,16 +17,16 @@
 
     body{
       font-family:'Poppins',sans-serif;
-      background:#f6f5f2;
-      color:#0b1320;
+      background:linear-gradient(135deg,#fbf7f3,#f5efe8,#f8fafc);
+      color:#111827;
       overflow-x:hidden;
       transition:0.4s;
     }
 
     /* DARK MODE */
     body.dark{
-      background:#0b1320;
-      color:#f6f5f2;
+      background:linear-gradient(135deg,#0b1320,#101c2c,#1a2b45);
+      color:#f8fafc;
     }
 
     /* NAVBAR */
@@ -35,35 +35,35 @@
       top:0;
       left:0;
       width:100%;
+      padding:16px 60px;
       display:flex;
       justify-content:space-between;
       align-items:center;
-      padding:18px 60px;
       background:rgba(255,255,255,0.75);
-      backdrop-filter:blur(20px);
+      backdrop-filter:blur(18px);
+      border-bottom:1px solid rgba(0,0,0,0.06);
       z-index:9999;
-      border-bottom:1px solid rgba(0,0,0,0.08);
     }
 
     body.dark nav{
-      background:rgba(0,0,0,0.6);
+      background:rgba(0,0,0,0.55);
       border-bottom:1px solid rgba(255,255,255,0.08);
     }
 
     nav .logo{
       font-size:18px;
-      font-weight:800;
+      font-weight:900;
       letter-spacing:1px;
-      color:#0b1320;
+      color:#111827;
     }
 
     body.dark nav .logo{
-      color:#d4af37;
+      color:#f6d7b0;
     }
 
     nav ul{
       display:flex;
-      gap:15px;
+      gap:14px;
       list-style:none;
     }
 
@@ -71,29 +71,28 @@
       text-decoration:none;
       font-weight:700;
       font-size:14px;
-      color:#0b1320;
+      color:#111827;
       padding:10px 18px;
-      border-radius:25px;
-      transition:0.35s;
+      border-radius:30px;
+      transition:0.3s;
     }
 
     body.dark nav ul li a{
-      color:#f6f5f2;
+      color:#f8fafc;
     }
 
     nav ul li a:hover{
-      background:#0b1320;
-      color:#d4af37;
+      background:rgba(17,24,39,0.08);
     }
 
     body.dark nav ul li a:hover{
-      background:#d4af37;
-      color:#0b1320;
+      background:rgba(255,255,255,0.1);
     }
 
     nav ul li a.active{
-      background:#d4af37;
-      color:#0b1320;
+      background:linear-gradient(135deg,#f6d7b0,#d4af37);
+      color:#111827;
+      font-weight:900;
     }
 
     /* NAV BUTTONS */
@@ -107,31 +106,39 @@
       padding:10px 16px;
       border-radius:25px;
       font-size:13px;
-      font-weight:800;
+      font-weight:900;
       cursor:pointer;
       border:none;
       transition:0.3s;
-      background:#0b1320;
-      color:#d4af37;
-      box-shadow:0 12px 25px rgba(0,0,0,0.15);
+      background:linear-gradient(135deg,#f6d7b0,#d4af37);
+      color:#111827;
+      box-shadow:0 12px 25px rgba(0,0,0,0.12);
     }
 
     .btn-mini:hover{
       transform:scale(1.07);
     }
 
-    body.dark .btn-mini{
-      background:#d4af37;
-      color:#0b1320;
+    /* HAMBURGER */
+    .hamburger{
+      display:none;
+      font-size:26px;
+      cursor:pointer;
+      font-weight:900;
+      color:#111827;
     }
 
-    /* HEADER */
+    body.dark .hamburger{
+      color:#f6d7b0;
+    }
+
+    /* HERO SECTION */
     header{
-      padding:140px 60px 80px;
+      padding:160px 70px 90px;
       display:flex;
-      align-items:center;
       justify-content:space-between;
-      gap:50px;
+      align-items:center;
+      gap:55px;
       position:relative;
       overflow:hidden;
     }
@@ -139,29 +146,37 @@
     header::before{
       content:"";
       position:absolute;
-      width:450px;
-      height:450px;
-      background:rgba(212,175,55,0.25);
-      top:-180px;
-      right:-180px;
+      top:-200px;
+      right:-200px;
+      width:500px;
+      height:500px;
+      background:rgba(246,215,176,0.55);
       border-radius:50%;
-      filter:blur(50px);
+      filter:blur(70px);
+      animation:floatGlow 6s ease-in-out infinite;
     }
 
     header::after{
       content:"";
       position:absolute;
-      width:400px;
-      height:400px;
-      background:rgba(11,19,32,0.18);
-      bottom:-180px;
-      left:-180px;
+      bottom:-220px;
+      left:-220px;
+      width:550px;
+      height:550px;
+      background:rgba(17,24,39,0.12);
       border-radius:50%;
-      filter:blur(50px);
+      filter:blur(80px);
+      animation:floatGlow 8s ease-in-out infinite;
     }
 
     body.dark header::after{
       background:rgba(255,255,255,0.08);
+    }
+
+    @keyframes floatGlow{
+      0%{transform:translateY(0px);}
+      50%{transform:translateY(-25px);}
+      100%{transform:translateY(0px);}
     }
 
     .hero-left{
@@ -170,30 +185,34 @@
     }
 
     .hero-left h1{
-      font-size:52px;
+      font-size:55px;
       font-weight:900;
-      line-height:1.2;
-      color:#0b1320;
+      line-height:1.15;
+      color:#111827;
     }
 
     body.dark .hero-left h1{
-      color:#f6f5f2;
+      color:#f8fafc;
     }
 
     .hero-left p{
-      margin-top:14px;
+      margin-top:15px;
       font-size:15px;
       opacity:0.85;
-      line-height:1.8;
+      line-height:1.9;
       max-width:520px;
     }
 
     .typing{
-      margin-top:20px;
-      font-weight:800;
+      margin-top:18px;
+      font-weight:900;
       font-size:16px;
       color:#d4af37;
       min-height:24px;
+    }
+
+    body.dark .typing{
+      color:#f6d7b0;
     }
 
     .hero-buttons{
@@ -207,37 +226,36 @@
       padding:14px 28px;
       border-radius:40px;
       text-decoration:none;
-      font-weight:800;
+      font-weight:900;
       font-size:14px;
-      background:#0b1320;
-      color:#d4af37;
+      background:#111827;
+      color:#f6d7b0;
       box-shadow:0 18px 45px rgba(0,0,0,0.18);
       transition:0.35s;
     }
 
     .btn-main:hover{
       transform:translateY(-5px);
-      box-shadow:0 30px 70px rgba(0,0,0,0.25);
     }
 
     .btn-outline{
       padding:14px 28px;
       border-radius:40px;
       text-decoration:none;
-      font-weight:800;
+      font-weight:900;
       font-size:14px;
       border:2px solid #d4af37;
-      color:#0b1320;
+      color:#111827;
       transition:0.35s;
     }
 
     body.dark .btn-outline{
-      color:#f6f5f2;
+      color:#f8fafc;
     }
 
     .btn-outline:hover{
       background:#d4af37;
-      color:#0b1320;
+      color:#111827;
       transform:translateY(-5px);
     }
 
@@ -250,12 +268,12 @@
     }
 
     .profile-pic{
-      width:320px;
-      height:320px;
+      width:340px;
+      height:420px;
       border-radius:35px;
       object-fit:cover;
-      border:6px solid rgba(255,255,255,0.8);
-      box-shadow:0 25px 80px rgba(0,0,0,0.25);
+      border:6px solid rgba(255,255,255,0.9);
+      box-shadow:0 30px 90px rgba(0,0,0,0.22);
       animation:float 3s ease-in-out infinite;
     }
 
@@ -265,30 +283,31 @@
       100%{transform:translateY(0);}
     }
 
-    /* SECTION */
+    /* CONTAINER */
     .container{
       max-width:1150px;
       margin:auto;
       padding:30px;
     }
 
+    /* CARD */
     .card{
-      background:rgba(255,255,255,0.75);
-      border-radius:25px;
-      padding:40px;
+      background:rgba(255,255,255,0.72);
+      border-radius:28px;
+      padding:42px;
       margin-bottom:28px;
-      border:1px solid rgba(0,0,0,0.08);
-      box-shadow:0 20px 60px rgba(0,0,0,0.10);
+      border:1px solid rgba(0,0,0,0.07);
+      box-shadow:0 20px 70px rgba(0,0,0,0.10);
       backdrop-filter:blur(16px);
-      transition:0.8s;
+      transition:0.9s;
       opacity:0;
-      transform:translateY(50px);
+      transform:translateY(55px);
     }
 
     body.dark .card{
       background:rgba(255,255,255,0.05);
       border:1px solid rgba(255,255,255,0.08);
-      box-shadow:0 20px 70px rgba(0,0,0,0.35);
+      box-shadow:0 25px 80px rgba(0,0,0,0.35);
     }
 
     .card.show{
@@ -300,15 +319,15 @@
       font-size:26px;
       margin-bottom:14px;
       font-weight:900;
-      color:#0b1320;
+      color:#111827;
     }
 
     body.dark .card h2{
-      color:#d4af37;
+      color:#f6d7b0;
     }
 
     .card p{
-      line-height:1.9;
+      line-height:1.95;
       font-size:15px;
       opacity:0.9;
     }
@@ -353,7 +372,7 @@
     .skill-title{
       display:flex;
       justify-content:space-between;
-      font-weight:800;
+      font-weight:900;
       margin-bottom:8px;
       font-size:14px;
     }
@@ -362,20 +381,20 @@
       width:100%;
       height:12px;
       border-radius:20px;
-      background:rgba(0,0,0,0.1);
+      background:rgba(17,24,39,0.12);
       overflow:hidden;
     }
 
     body.dark .skill-bar{
-      background:rgba(255,255,255,0.1);
+      background:rgba(255,255,255,0.12);
     }
 
     .skill-bar div{
       height:100%;
       width:0;
       border-radius:20px;
-      background:linear-gradient(90deg, #d4af37, #0b1320);
-      transition:1.5s;
+      background:linear-gradient(90deg,#f6d7b0,#d4af37,#111827);
+      transition:1.6s;
     }
 
     /* TIMELINE */
@@ -396,7 +415,7 @@
     }
 
     .timeline-item small{
-      opacity:0.7;
+      opacity:0.75;
       font-weight:700;
     }
 
@@ -415,7 +434,7 @@
       object-fit:cover;
       cursor:pointer;
       transition:0.35s;
-      box-shadow:0 18px 50px rgba(0,0,0,0.2);
+      box-shadow:0 18px 50px rgba(0,0,0,0.18);
     }
 
     .gallery img:hover{
@@ -431,7 +450,7 @@
       left:0;
       width:100%;
       height:100vh;
-      background:rgba(0,0,0,0.8);
+      background:rgba(0,0,0,0.85);
       justify-content:center;
       align-items:center;
       padding:20px;
@@ -441,7 +460,7 @@
       max-width:95%;
       max-height:80vh;
       border-radius:25px;
-      box-shadow:0 30px 80px rgba(0,0,0,0.55);
+      box-shadow:0 30px 90px rgba(0,0,0,0.55);
     }
 
     .modal span{
@@ -454,7 +473,7 @@
       font-weight:900;
     }
 
-    /* CONTACT */
+    /* CONTACT FORM */
     form{
       margin-top:20px;
       display:grid;
@@ -484,10 +503,10 @@
       border-radius:18px;
       cursor:pointer;
       font-weight:900;
-      background:#0b1320;
-      color:#d4af37;
+      background:#111827;
+      color:#f6d7b0;
       transition:0.35s;
-      box-shadow:0 16px 45px rgba(0,0,0,0.18);
+      box-shadow:0 18px 55px rgba(0,0,0,0.18);
     }
 
     button:hover{
@@ -499,8 +518,8 @@
       margin-top:50px;
       text-align:center;
       padding:35px;
-      background:#0b1320;
-      color:#d4af37;
+      background:#111827;
+      color:#f6d7b0;
       font-weight:700;
       border-top-left-radius:60px;
       border-top-right-radius:60px;
@@ -511,8 +530,8 @@
       position:fixed;
       bottom:25px;
       right:25px;
-      background:#d4af37;
-      color:#0b1320;
+      background:linear-gradient(135deg,#f6d7b0,#d4af37);
+      color:#111827;
       border:none;
       padding:14px 18px;
       border-radius:50%;
@@ -528,27 +547,54 @@
       transform:scale(1.1);
     }
 
-    /* RESPONSIVE */
-    @media(max-width:900px){
+    /* RESPONSIVE MOBILE */
+    @media(max-width:950px){
+      nav{
+        padding:16px 25px;
+      }
+
+      nav ul{
+        position:absolute;
+        top:70px;
+        left:0;
+        width:100%;
+        background:rgba(255,255,255,0.92);
+        backdrop-filter:blur(18px);
+        flex-direction:column;
+        padding:18px;
+        gap:10px;
+        display:none;
+      }
+
+      body.dark nav ul{
+        background:rgba(0,0,0,0.75);
+      }
+
+      nav ul.show{
+        display:flex;
+      }
+
+      .hamburger{
+        display:block;
+      }
+
       header{
         flex-direction:column-reverse;
         text-align:center;
-        padding:140px 25px 70px;
-      }
-
-      nav{
-        padding:16px 20px;
-        flex-direction:column;
-        gap:12px;
+        padding:150px 25px 70px;
       }
 
       .profile-pic{
-        width:230px;
-        height:230px;
+        width:250px;
+        height:320px;
       }
 
       .hero-left h1{
         font-size:36px;
+      }
+
+      .hero-buttons{
+        justify-content:center;
       }
     }
   </style>
@@ -558,9 +604,11 @@
 
   <!-- NAVBAR -->
   <nav>
-    <div class="logo">💎 Weni Portfolio</div>
+    <div class="logo">✨ WOA</div>
 
-    <ul>
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+
+    <ul id="menu">
       <li><a href="#beranda" class="nav-link active">Beranda</a></li>
       <li><a href="#profil" class="nav-link">Profil</a></li>
       <li><a href="#biodata" class="nav-link">Biodata</a></li>
@@ -576,21 +624,21 @@
     </div>
   </nav>
 
-  <!-- HEADER -->
+  <!-- HERO -->
   <header id="beranda">
     <div class="hero-left">
       <h1>Weni Oktavia Agus</h1>
       <p>
-        Selamat datang di portofolio luxury saya.  
-        Website ini menampilkan perjalanan, pengalaman, dan karya terbaik saya
-        dengan desain elegan & modern.
+        Selamat datang di luxury portfolio saya.  
+        Tempat saya menampilkan pengalaman, kemampuan, dan karya terbaik
+        dengan tampilan elegan ala Pinterest.
       </p>
 
       <div class="typing" id="typingText"></div>
 
       <div class="hero-buttons">
         <a href="CV-Weni.pdf" class="btn-main" download>📄 Download CV</a>
-        <a href="#kontak" class="btn-outline">✨ Hubungi Saya</a>
+        <a href="#kontak" class="btn-outline">💌 Hubungi Saya</a>
       </div>
     </div>
 
@@ -605,9 +653,9 @@
       <h2>Tentang Saya</h2>
       <p>
         Halo! Saya <b>Weni Oktavia Agus</b>.  
-        Saya menyukai dunia kreatif, desain modern, dan personal branding.
-        Saya percaya bahwa <b>konsistensi, disiplin, dan kreativitas</b>
-        adalah kunci untuk mencapai kesuksesan.
+        Saya suka desain modern, branding elegan, dan kreativitas.
+        Saya percaya bahwa <b>konsistensi</b> dan <b>disiplin</b>
+        adalah jalan menuju kesuksesan.
       </p>
     </div>
 
@@ -698,7 +746,7 @@
   </div>
 
   <footer>
-    © 2026 • <b>Weni Oktavia Agus</b> • Luxury Portfolio • Made with 💎
+    © 2026 • <b>Weni Oktavia Agus</b> • Pinterest Luxury Portfolio • Made with ✨
   </footer>
 
   <!-- MODAL -->
@@ -707,6 +755,7 @@
     <img id="modalImg">
   </div>
 
+  <!-- SCROLL TOP -->
   <button id="scrollTopBtn" onclick="scrollToTop()">↑</button>
 
   <!-- MUSIC -->
@@ -720,9 +769,20 @@
       document.body.classList.toggle("dark");
     }
 
+    // MENU MOBILE
+    function toggleMenu(){
+      document.getElementById("menu").classList.toggle("show");
+    }
+
+    // CLOSE MENU AFTER CLICK
+    document.querySelectorAll(".nav-link").forEach(link=>{
+      link.addEventListener("click", ()=>{
+        document.getElementById("menu").classList.remove("show");
+      });
+    });
+
     // REVEAL CARD
     const cards = document.querySelectorAll(".card");
-
     function revealCards(){
       const triggerBottom = window.innerHeight * 0.85;
       cards.forEach(card=>{
@@ -732,7 +792,6 @@
         }
       });
     }
-
     window.addEventListener("scroll", revealCards);
     revealCards();
 
@@ -774,7 +833,7 @@
     window.addEventListener("scroll", ()=>{
       let current="";
       sections.forEach(section=>{
-        const sectionTop = section.offsetTop - 150;
+        const sectionTop = section.offsetTop - 160;
         if(scrollY >= sectionTop){
           current = section.getAttribute("id");
         }
@@ -789,19 +848,19 @@
     });
 
     // TYPING EFFECT
-    const text = "Luxury Designer • Elegant Branding • Future Successful Woman";
+    const text = "Pinterest Luxury • Soft Elegant Branding • Future Successful Woman ✨";
     let index = 0;
 
     function typeEffect(){
       if(index < text.length){
         document.getElementById("typingText").innerHTML += text.charAt(index);
         index++;
-        setTimeout(typeEffect, 60);
+        setTimeout(typeEffect, 55);
       }
     }
     typeEffect();
 
-    // MUSIC PLAY/PAUSE
+    // MUSIC
     const music = document.getElementById("bgMusic");
     let isPlaying = false;
 
@@ -809,7 +868,7 @@
       if(!isPlaying){
         music.play();
         isPlaying = true;
-        alert("🎶 Music ON (Luxury Mode Activated)");
+        alert("🎶 Music ON (Luxury Mood Activated ✨)");
       } else {
         music.pause();
         isPlaying = false;
