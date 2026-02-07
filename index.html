@@ -2,100 +2,416 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <title>Weni Oktavia Agus</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weni Oktavia Agus • Premium Portfolio</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: radial-gradient(circle at top left, #ffc1d9, #ffe6f0, #ffd6e8);
+            color: #5a004a;
+            overflow-x: hidden;
+            transition: 0.5s;
+        }
+
+        /* DARK MODE */
+        body.dark {
+            background: radial-gradient(circle at top left, #2a001e, #3b002b, #12000d);
+            color: #fff;
+        }
+
+        body.dark .card {
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        body.dark nav a {
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+        }
+
+        body.dark nav a:hover {
+            background: #ff4d94;
+            color: white;
+        }
+
+        body.dark footer {
+            background: linear-gradient(135deg, #ff2f86, #7a004f);
+        }
+
+        /* LOADER */
+        #loader {
+            position: fixed;
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(135deg, #ff77b7, #ffb6d5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            z-index: 9999;
+            color: white;
+            font-size: 20px;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .loader-circle {
+            width: 80px;
+            height: 80px;
+            border: 8px solid rgba(255,255,255,0.4);
+            border-top: 8px solid white;
+            border-radius: 50%;
+            animation: spin 1.2s linear infinite;
+            margin-bottom: 15px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* SPARKLES */
+        .sparkle {
+            position: fixed;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.8);
+            animation: sparkleMove 6s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes sparkleMove {
+            0% { transform: translateY(0); opacity: 0; }
+            20% { opacity: 1; }
+            100% { transform: translateY(600px); opacity: 0; }
+        }
+
+        /* HEADER */
+        header {
+            text-align: center;
+            padding: 95px 20px 70px;
+            background: linear-gradient(135deg, rgba(255, 119, 183, 0.95), rgba(255, 182, 213, 0.95));
+            color: white;
+            border-bottom-left-radius: 60px;
+            border-bottom-right-radius: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::after {
+            content: "";
+            position: absolute;
+            top: -80px;
+            left: -80px;
+            width: 260px;
+            height: 260px;
+            background: rgba(255, 255, 255, 0.25);
+            border-radius: 50%;
+            filter: blur(8px);
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            bottom: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.18);
+            border-radius: 50%;
+            filter: blur(12px);
+        }
+
+        .profile-pic {
+            width: 175px;
+            height: 175px;
+            border-radius: 50%;
+            border: 7px solid rgba(255, 255, 255, 0.95);
+            object-fit: cover;
+            box-shadow: 0 0 40px rgba(255, 105, 180, 0.95);
+            animation: float 3s ease-in-out infinite;
+        }
+
         @keyframes float {
             0% { transform: translateY(0); }
             50% { transform: translateY(-12px); }
             100% { transform: translateY(0); }
         }
 
-        body {
-            margin: 0;
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #ffc1d9, #ffe6f0);
-            color: #5a004a;
-        }
-
-        header {
-            text-align: center;
-            padding: 60px 20px;
-            background: linear-gradient(135deg, #ff77b7, #ffb6d5);
-            color: white;
-            border-bottom-left-radius: 40px;
-            border-bottom-right-radius: 40px;
-        }
-
-        .profile-pic {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            border: 6px solid white;
-            object-fit: cover;
-            box-shadow: 0 0 25px rgba(255, 105, 180, 0.8);
-            animation: float 3s ease-in-out infinite;
-        }
-
         header h1 {
-            margin: 20px 0 5px;
-            font-size: 34px;
+            margin-top: 22px;
+            font-size: 44px;
+            font-weight: 700;
+            text-shadow: 0 5px 20px rgba(0,0,0,0.25);
         }
 
         header p {
             font-size: 16px;
-            opacity: 0.9;
+            opacity: 0.95;
+            margin-top: 8px;
         }
 
+        .tagline {
+            margin-top: 18px;
+            display: inline-block;
+            padding: 10px 25px;
+            border-radius: 40px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            font-weight: 500;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.18);
+        }
+
+        /* NAV */
         nav {
             display: flex;
             justify-content: center;
-            gap: 25px;
-            margin: 25px 0;
+            flex-wrap: wrap;
+            gap: 18px;
+            margin: 28px 0;
+            padding: 10px;
         }
 
         nav a {
             text-decoration: none;
-            color: #ff4d94;
-            font-weight: bold;
-            background: white;
-            padding: 8px 18px;
-            border-radius: 20px;
-            box-shadow: 0 6px 15px rgba(255, 105, 180, 0.3);
+            color: #ff2f86;
+            font-weight: 600;
+            background: rgba(255, 255, 255, 0.85);
+            padding: 10px 24px;
+            border-radius: 40px;
+            box-shadow: 0 10px 25px rgba(255, 105, 180, 0.25);
+            transition: 0.3s;
+            backdrop-filter: blur(10px);
         }
 
+        nav a:hover {
+            transform: translateY(-5px);
+            background: #ff4d94;
+            color: white;
+            box-shadow: 0 16px 35px rgba(255, 105, 180, 0.55);
+        }
+
+        /* DARK MODE TOGGLE */
+        .toggle-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(255,255,255,0.75);
+            padding: 10px 18px;
+            border-radius: 40px;
+            cursor: pointer;
+            font-weight: 600;
+            color: #ff2f86;
+            box-shadow: 0 10px 25px rgba(255, 105, 180, 0.25);
+            transition: 0.3s;
+            z-index: 1000;
+        }
+
+        .toggle-btn:hover {
+            transform: scale(1.08);
+        }
+
+        body.dark .toggle-btn {
+            background: rgba(255,255,255,0.15);
+            color: white;
+        }
+
+        /* CONTAINER */
         .container {
-            max-width: 900px;
+            max-width: 1050px;
             margin: auto;
             padding: 20px;
         }
 
+        /* CARD */
         .card {
-            background: white;
-            border-radius: 25px;
-            padding: 30px;
+            background: rgba(255, 255, 255, 0.75);
+            border-radius: 30px;
+            padding: 38px;
             margin-bottom: 30px;
-            box-shadow: 0 15px 35px rgba(255, 105, 180, 0.25);
+            box-shadow: 0 18px 45px rgba(255, 105, 180, 0.22);
+            backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            opacity: 0;
+            transform: translateY(40px);
+            transition: 0.8s;
+        }
+
+        .card.show {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .card h2 {
-            color: #ff4d94;
-            margin-bottom: 10px;
+            font-size: 25px;
+            color: #ff2f86;
+            margin-bottom: 12px;
         }
 
+        body.dark .card h2 {
+            color: #ff77b7;
+        }
+
+        .card p {
+            font-size: 15px;
+            line-height: 1.9;
+            opacity: 0.9;
+        }
+
+        /* GRID */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 18px;
+            margin-top: 18px;
+        }
+
+        .box {
+            background: rgba(255, 255, 255, 0.6);
+            padding: 18px;
+            border-radius: 20px;
+            box-shadow: 0 10px 22px rgba(255, 105, 180, 0.15);
+            transition: 0.3s;
+        }
+
+        .box:hover {
+            transform: translateY(-6px);
+        }
+
+        .box span {
+            font-weight: 700;
+            color: #ff2f86;
+        }
+
+        /* SKILLS */
+        .skill {
+            margin: 15px 0;
+        }
+
+        .skill-title {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .skill-bar {
+            width: 100%;
+            height: 12px;
+            border-radius: 20px;
+            background: rgba(255, 105, 180, 0.2);
+            overflow: hidden;
+        }
+
+        .skill-bar div {
+            height: 100%;
+            border-radius: 20px;
+            background: linear-gradient(90deg, #ff4d94, #ff77b7);
+            width: 0;
+            transition: 1.5s;
+        }
+
+        /* TIMELINE */
+        .timeline {
+            margin-top: 15px;
+            border-left: 4px solid rgba(255, 77, 148, 0.6);
+            padding-left: 18px;
+        }
+
+        .timeline-item {
+            margin-bottom: 20px;
+        }
+
+        .timeline-item h3 {
+            font-size: 16px;
+            color: #ff2f86;
+        }
+
+        .timeline-item small {
+            opacity: 0.7;
+            font-weight: 500;
+        }
+
+        /* GALLERY */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 18px;
+            margin-top: 18px;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 190px;
+            border-radius: 22px;
+            object-fit: cover;
+            box-shadow: 0 14px 30px rgba(255, 105, 180, 0.25);
+            transition: 0.3s;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.07);
+        }
+
+        /* SOCIAL */
+        .social {
+            display: flex;
+            gap: 15px;
+            margin-top: 18px;
+            flex-wrap: wrap;
+        }
+
+        .social a {
+            text-decoration: none;
+            padding: 12px 22px;
+            border-radius: 30px;
+            font-weight: 600;
+            background: linear-gradient(135deg, #ff4d94, #ff77b7);
+            color: white;
+            box-shadow: 0 12px 28px rgba(255, 105, 180, 0.4);
+            transition: 0.3s;
+        }
+
+        .social a:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 18px 40px rgba(255, 105, 180, 0.65);
+        }
+
+        /* FOOTER */
         footer {
             text-align: center;
-            padding: 20px;
+            padding: 28px;
+            margin-top: 40px;
             color: white;
-            background: #ff77b7;
-            border-top-left-radius: 40px;
-            border-top-right-radius: 40px;
+            background: linear-gradient(135deg, #ff77b7, #ff4d94);
+            border-top-left-radius: 60px;
+            border-top-right-radius: 60px;
+            font-weight: 500;
         }
 
+        /* RESPONSIVE */
         @media (max-width: 600px) {
             header h1 {
-                font-size: 26px;
+                font-size: 30px;
+            }
+
+            .profile-pic {
+                width: 140px;
+                height: 140px;
+            }
+
+            .card {
+                padding: 25px;
             }
         }
     </style>
@@ -103,42 +419,204 @@
 
 <body>
 
-<header>
-    <img src="Weni Oktavia Agus_.jpg" alt="Foto Weni Oktavia Agus" class="profile-pic">
+<!-- LOADER -->
+<div id="loader">
+    <div class="loader-circle"></div>
+    <p>✨ Memuat Portofolio Weni... ✨</p>
+</div>
+
+<!-- DARK MODE BUTTON -->
+<div class="toggle-btn" onclick="toggleDarkMode()">🌙 Dark Mode</div>
+
+<header id="beranda">
+    <img src="Weni Oktavia Agus_.jpg" class="profile-pic" alt="Foto Weni">
     <h1>🌸 Weni Oktavia Agus 🌸</h1>
-    <p>Website Personal • Pink Aesthetic</p>
+    <p>Premium Personal Portfolio • Soft Pink Aesthetic</p>
+    <div class="tagline">✨ Elegant • Feminine • Creative • Professional ✨</div>
 </header>
 
 <nav>
-    <a href="#">Beranda</a>
-    <a href="#">Profil</a>
-    <a href="#">Biodata</a>
-    <a href="#">Kontak</a>
+    <a href="#beranda">Beranda</a>
+    <a href="#profil">Profil</a>
+    <a href="#biodata">Biodata</a>
+    <a href="#skill">Skill</a>
+    <a href="#pengalaman">Pengalaman</a>
+    <a href="#galeri">Galeri</a>
+    <a href="#kontak">Kontak</a>
 </nav>
 
 <div class="container">
-    <div class="card">
+
+    <div class="card" id="profil">
         <h2>✨ Tentang Saya</h2>
         <p>
-            Halo! Saya <strong>Weni Oktavia Agus</strong>.  
-            Ini adalah website personal dengan nuansa pink aesthetic yang lembut, simpel,
-            dan feminin 💕
+            Halo! Saya <b>Weni Oktavia Agus</b>.  
+            Saya adalah seseorang yang suka dunia kreatif, desain aesthetic, dan pengembangan diri.
+            Website ini saya buat sebagai media portofolio untuk memperkenalkan diri saya secara lebih profesional.
+            <br><br>
+            Saya percaya bahwa <b>konsistensi + kreativitas</b> adalah kunci untuk menjadi versi terbaik dari diri sendiri 💕
         </p>
     </div>
 
-    <div class="card">
+    <div class="card" id="biodata">
         <h2>🎀 Biodata Singkat</h2>
-        <p>
-            Nama : Weni Oktavia Agus <br>
-            Status : Pelajar / Mahasiswa <br>
-            Hobi : Membaca, Desain, dan Belajar Hal Baru 💖
-        </p>
+        <div class="grid">
+            <div class="box"><span>Nama:</span> Weni Oktavia Agus</div>
+            <div class="box"><span>Status:</span> Pelajar / Mahasiswa</div>
+            <div class="box"><span>Hobi:</span> Membaca, Desain, Belajar Hal Baru</div>
+            <div class="box"><span>Minat:</span> Pendidikan, Kreativitas, Teknologi</div>
+            <div class="box"><span>Kepribadian:</span> Kreatif, Teliti, Disiplin</div>
+            <div class="box"><span>Motto:</span> "Glow Up Every Day ✨"</div>
+        </div>
     </div>
+
+    <div class="card" id="skill">
+        <h2>💎 Skill & Kemampuan</h2>
+
+        <div class="skill">
+            <div class="skill-title"><span>Desain Grafis</span><span>90%</span></div>
+            <div class="skill-bar"><div data-skill="90"></div></div>
+        </div>
+
+        <div class="skill">
+            <div class="skill-title"><span>Public Speaking</span><span>80%</span></div>
+            <div class="skill-bar"><div data-skill="80"></div></div>
+        </div>
+
+        <div class="skill">
+            <div class="skill-title"><span>Microsoft Office</span><span>85%</span></div>
+            <div class="skill-bar"><div data-skill="85"></div></div>
+        </div>
+
+        <div class="skill">
+            <div class="skill-title"><span>Kerja Tim</span><span>92%</span></div>
+            <div class="skill-bar"><div data-skill="92"></div></div>
+        </div>
+    </div>
+
+    <div class="card" id="pengalaman">
+        <h2>🏆 Pengalaman & Prestasi</h2>
+        <p>Beberapa pengalaman yang pernah saya jalani:</p>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <h3>✨ Ketua Panitia Kegiatan Sekolah</h3>
+                <small>2024</small>
+                <p>Mengelola acara dan mengatur jalannya kegiatan bersama tim.</p>
+            </div>
+
+            <div class="timeline-item">
+                <h3>🎨 Desainer Poster & Media Sosial</h3>
+                <small>2025</small>
+                <p>Membuat desain poster dan konten digital untuk event dan organisasi.</p>
+            </div>
+
+            <div class="timeline-item">
+                <h3>📚 Aktif di Kegiatan Akademik</h3>
+                <small>2026</small>
+                <p>Aktif mengikuti pembelajaran dan mengembangkan kemampuan diri.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="card" id="galeri">
+        <h2>📸 Galeri Portofolio</h2>
+        <p>Contoh dokumentasi atau karya yang bisa saya tampilkan:</p>
+
+        <div class="gallery">
+            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=600&q=80">
+            <img src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?auto=format&fit=crop&w=600&q=80">
+            <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80">
+            <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=600&q=80">
+        </div>
+    </div>
+
+    <div class="card" id="kontak">
+        <h2>💌 Kontak Saya</h2>
+        <p>
+            Jika ingin bekerja sama, bertanya, atau sekadar berteman, silakan hubungi saya:
+        </p>
+
+        <div class="grid">
+            <div class="box"><span>Email:</span> wenioctavia@gmail.com</div>
+            <div class="box"><span>Instagram:</span> @wenioktavia</div>
+            <div class="box"><span>WhatsApp:</span> 08xxxxxxxxxx</div>
+            <div class="box"><span>Alamat:</span> Indonesia</div>
+        </div>
+
+        <div class="social">
+            <a href="#">📷 Instagram</a>
+            <a href="#">💬 WhatsApp</a>
+            <a href="#">📧 Email</a>
+            <a href="#">💼 LinkedIn</a>
+        </div>
+    </div>
+
 </div>
 
 <footer>
-    © 2026 • Weni Oktavia Agus • Made with 💕
+    © 2026 • <b>Weni Oktavia Agus</b> • Premium Portfolio • Made with 💕✨
 </footer>
+
+<script>
+    // LOADER
+    window.addEventListener("load", function () {
+        document.getElementById("loader").style.display = "none";
+    });
+
+    // DARK MODE
+    function toggleDarkMode() {
+        document.body.classList.toggle("dark");
+    }
+
+    // SCROLL REVEAL
+    const cards = document.querySelectorAll(".card");
+
+    function revealCards() {
+        const triggerBottom = window.innerHeight * 0.85;
+
+        cards.forEach(card => {
+            const boxTop = card.getBoundingClientRect().top;
+
+            if (boxTop < triggerBottom) {
+                card.classList.add("show");
+            }
+        });
+    }
+
+    window.addEventListener("scroll", revealCards);
+    revealCards();
+
+    // SKILL ANIMATION
+    const skillBars = document.querySelectorAll(".skill-bar div");
+
+    function animateSkills() {
+        skillBars.forEach(bar => {
+            const skillValue = bar.getAttribute("data-skill");
+            bar.style.width = skillValue + "%";
+        });
+    }
+
+    animateSkills();
+
+    // SPARKLES EFFECT
+    function createSparkle() {
+        const sparkle = document.createElement("div");
+        sparkle.classList.add("sparkle");
+
+        sparkle.style.left = Math.random() * window.innerWidth + "px";
+        sparkle.style.top = "-10px";
+        sparkle.style.animationDuration = (Math.random() * 3 + 3) + "s";
+
+        document.body.appendChild(sparkle);
+
+        setTimeout(() => {
+            sparkle.remove();
+        }, 6000);
+    }
+
+    setInterval(createSparkle, 250);
+</script>
 
 </body>
 </html>
